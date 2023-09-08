@@ -1,25 +1,20 @@
 import { Schema,model } from "mongoose";
 
-const VentasSchema = Schema({
-    fechaVenta:{
-        type:Date
-    },
-    paciente:{
-        bombre:String,
+const ventaSchema = Schema({
+    fechaVenta: Date,
+    paciente: {
+        nombre: String,
         direccion: String
     },
-    empleado:{
-        nombre: String
+    empleado: {
+        nombre: String,
+        cargo: String
     },
-    fechaExpiracion:{
-        type: Date
-    },
-    medicamentosVendidos:{
-        type:Array,
-        nombreMedicamento:String,
-        cantidadVendida:Number,
+    medicamentosVendidos: [{
+        nombreMedicamento: String,
+        cantidadVendida: Number,
         precio: Number
-    }
-})
-const Medicamento= model('Ventas',VentasSchema)
-export default  Medicamento
+    }]
+});
+const Venta = model('Venta', ventaSchema);
+export default Venta
